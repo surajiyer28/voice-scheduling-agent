@@ -162,7 +162,7 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
               value={toTimeInput(slot.start_time)}
               disabled={!slot.is_available}
               onChange={(e) => update(i, "start_time", e.target.value)}
-              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] w-28 disabled:opacity-30 disabled:bg-gray-50"
+              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] w-36 disabled:opacity-30 disabled:bg-gray-50"
             />
 
             <input
@@ -170,7 +170,7 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
               value={toTimeInput(slot.end_time)}
               disabled={!slot.is_available}
               onChange={(e) => update(i, "end_time", e.target.value)}
-              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] w-28 disabled:opacity-30 disabled:bg-gray-50"
+              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] w-36 disabled:opacity-30 disabled:bg-gray-50"
             />
           </div>
         ))}
