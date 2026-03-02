@@ -43,8 +43,10 @@ export const authOptions: AuthOptions = {
     },
     async session({ session, token }) {
       session.user = session.user ?? {};
-      (session as Record<string, unknown>).accessToken = token.accessToken;
-      (session.user as Record<string, unknown>).googleId = token.googleId;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (session as any).accessToken = token.accessToken;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (session.user as any).googleId = token.googleId;
       return session;
     },
     async signIn({ user, account, profile }) {
