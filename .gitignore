@@ -19,6 +19,9 @@ node_modules/
 .next/
 out/
 
+# Claude
+.claude/
+
 # Misc
 .DS_Store
 *.log
