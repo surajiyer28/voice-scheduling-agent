@@ -120,7 +120,7 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
             setTimezone(e.target.value);
             setSaved(false);
           }}
-          className="border-2 border-gray-900 px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1 bg-white"
+          className="border-2 border-[var(--border-bold)] px-3 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:ring-offset-1 bg-[var(--bg-card)]"
         >
           {US_TIMEZONES.map((tz) => (
             <option key={tz.value} value={tz.value}>
@@ -130,8 +130,8 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
         </select>
       </div>
 
-      <div className="bg-white border-2 border-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-        <div className="grid grid-cols-4 gap-0 bg-gray-900 px-5 py-3 text-xs font-bold text-white uppercase tracking-wider">
+      <div className="bg-[var(--bg-card)] border-2 border-[var(--border-bold)] shadow-[4px_4px_0px_0px_var(--shadow-color)] overflow-hidden">
+        <div className="grid grid-cols-4 gap-0 bg-[var(--accent-primary)] px-5 py-3 text-xs font-bold text-white uppercase tracking-wider">
           <span>Day</span>
           <span>Available</span>
           <span>Start</span>
@@ -154,7 +154,7 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
                 onChange={(e) => update(i, "is_available", e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-10 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-gray-900 peer-focus:ring-offset-1 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-900" />
+              <div className="w-10 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[var(--accent-primary)] peer-focus:ring-offset-1 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--accent-primary)]" />
             </label>
 
             <input
@@ -162,7 +162,7 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
               value={toTimeInput(slot.start_time)}
               disabled={!slot.is_available}
               onChange={(e) => update(i, "start_time", e.target.value)}
-              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-gray-900 w-28 disabled:opacity-30 disabled:bg-gray-50"
+              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] w-28 disabled:opacity-30 disabled:bg-gray-50"
             />
 
             <input
@@ -170,7 +170,7 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
               value={toTimeInput(slot.end_time)}
               disabled={!slot.is_available}
               onChange={(e) => update(i, "end_time", e.target.value)}
-              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-gray-900 w-28 disabled:opacity-30 disabled:bg-gray-50"
+              className="border-2 border-gray-300 px-2 py-1.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] w-28 disabled:opacity-30 disabled:bg-gray-50"
             />
           </div>
         ))}
@@ -184,7 +184,7 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="px-6 py-2.5 bg-gray-900 text-white text-sm font-bold uppercase tracking-wide hover:bg-gray-800 disabled:opacity-60 transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,0.2)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
+          className="px-6 py-2.5 bg-[var(--accent-primary)] text-white text-sm font-bold uppercase tracking-wide hover:bg-[var(--accent-primary-hover)] disabled:opacity-60 transition-colors shadow-[3px_3px_0px_0px_var(--shadow-color)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
         >
           {saving ? "Saving..." : "Save Availability"}
         </button>

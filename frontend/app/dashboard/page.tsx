@@ -102,7 +102,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="w-8 h-8 border-4 border-gray-900 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -121,8 +121,8 @@ export default function DashboardPage() {
       </div>
 
       {upcomingBookings.length === 0 ? (
-        <div className="bg-white border-2 border-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-14 text-center">
-          <div className="w-16 h-16 bg-gray-100 flex items-center justify-center mx-auto mb-5">
+        <div className="bg-[var(--bg-card)] border-2 border-[var(--border-bold)] shadow-[4px_4px_0px_0px_var(--shadow-color)] p-14 text-center">
+          <div className="w-16 h-16 bg-[var(--accent-lavender)] flex items-center justify-center mx-auto mb-5">
             <svg
               className="w-8 h-8 text-gray-400"
               fill="none"

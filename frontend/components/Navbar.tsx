@@ -30,12 +30,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-white border-b-2 border-gray-900 sticky top-0 z-20">
+    <nav className="bg-[var(--bg-nav)] border-b-2 border-[var(--border-bold)] sticky top-0 z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           <div className="flex items-center gap-8">
             <Link href="/dashboard" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 bg-gray-900 flex items-center justify-center">
+              <div className="w-8 h-8 bg-[var(--accent-primary)] flex items-center justify-center">
                 <svg
                   className="w-5 h-5 text-white"
                   fill="none"
@@ -63,8 +63,8 @@ export function Navbar() {
                   className={clsx(
                     "px-3 py-1.5 text-sm font-semibold tracking-tight transition-colors",
                     pathname === link.href
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+                      ? "bg-[var(--accent-primary)] text-white"
+                      : "text-gray-500 hover:text-gray-900 hover:bg-[var(--accent-lavender)]"
                   )}
                 >
                   {link.label}
@@ -76,7 +76,7 @@ export function Navbar() {
           <div className="relative" ref={menuRef}>
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="flex items-center gap-2.5 px-2 py-1.5 hover:bg-gray-100 transition-colors"
+              className="flex items-center gap-2.5 px-2 py-1.5 hover:bg-[var(--accent-lavender)] transition-colors"
             >
               {session?.user?.image ? (
                 <Image
@@ -106,7 +106,7 @@ export function Navbar() {
             </button>
 
             {menuOpen && (
-              <div className="absolute right-0 mt-1 w-56 bg-white border-2 border-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30">
+              <div className="absolute right-0 mt-1 w-56 bg-[var(--bg-card)] border-2 border-[var(--border-bold)] shadow-[4px_4px_0px_0px_var(--shadow-color)] z-30">
                 <div className="px-4 py-3 border-b border-gray-200">
                   <p className="text-sm font-semibold text-gray-900 truncate">
                     {session?.user?.name}
@@ -119,7 +119,7 @@ export function Navbar() {
                   href="https://calendar.google.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                  className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-[var(--accent-lavender)] transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   Google Calendar

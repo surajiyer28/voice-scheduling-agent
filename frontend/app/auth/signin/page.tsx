@@ -15,10 +15,10 @@ export default function SignInPage() {
   }, [session, router]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="bg-white border-2 border-gray-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-10 max-w-sm w-full flex flex-col items-center gap-8">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-base)] px-4">
+      <div className="bg-[var(--bg-card)] border-2 border-[var(--border-bold)] shadow-[6px_6px_0px_0px_var(--shadow-color)] p-10 max-w-sm w-full flex flex-col items-center gap-8">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-14 h-14 bg-gray-900 flex items-center justify-center">
+          <div className="w-14 h-14 bg-[var(--accent-primary)] flex items-center justify-center">
             <svg
               className="w-8 h-8 text-white"
               fill="none"
@@ -44,7 +44,7 @@ export default function SignInPage() {
 
         <button
           onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-          className="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-900 px-4 py-3 text-gray-900 font-bold hover:bg-gray-900 hover:text-white transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
+          className="w-full flex items-center justify-center gap-3 bg-[var(--bg-card)] border-2 border-[var(--border-bold)] px-4 py-3 text-gray-900 font-bold hover:bg-[var(--accent-primary)] hover:text-white transition-colors shadow-[3px_3px_0px_0px_var(--shadow-color)] hover:shadow-[1px_1px_0px_0px_var(--shadow-color)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path

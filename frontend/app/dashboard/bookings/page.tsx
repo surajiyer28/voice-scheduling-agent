@@ -73,8 +73,8 @@ export default function BookingsPage() {
               className={clsx(
                 "px-4 py-1.5 text-sm font-bold uppercase tracking-wide transition-colors border-2",
                 statusFilter === s
-                  ? "bg-gray-900 text-white border-gray-900"
-                  : "border-gray-300 text-gray-600 hover:bg-gray-100 hover:border-gray-400"
+                  ? "bg-[var(--accent-primary)] text-white border-[var(--accent-primary)]"
+                  : "border-gray-300 text-gray-600 hover:bg-[var(--accent-lavender)] hover:border-[var(--accent-primary)]"
               )}
             >
               {s}
@@ -85,18 +85,18 @@ export default function BookingsPage() {
 
       {loading ? (
         <div className="flex items-center justify-center py-16">
-          <div className="w-8 h-8 border-4 border-gray-900 border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-4 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin" />
         </div>
       ) : bookings.length === 0 ? (
-        <div className="bg-white border-2 border-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-12 text-center">
+        <div className="bg-[var(--bg-card)] border-2 border-[var(--border-bold)] shadow-[4px_4px_0px_0px_var(--shadow-color)] p-12 text-center">
           <p className="text-gray-500 font-semibold">No bookings found.</p>
         </div>
       ) : (
-        <div className="bg-white border-2 border-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+        <div className="bg-[var(--bg-card)] border-2 border-[var(--border-bold)] shadow-[4px_4px_0px_0px_var(--shadow-color)] overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-gray-900 text-white">
+                <tr className="bg-[var(--accent-primary)] text-white">
                   <th className="text-left px-5 py-3 text-xs font-bold uppercase tracking-wider">
                     Caller
                   </th>
@@ -121,7 +121,7 @@ export default function BookingsPage() {
                 {bookings.map((b) => (
                   <tr
                     key={b.id}
-                    className="border-b border-gray-200 last:border-0 hover:bg-gray-50 transition-colors"
+                    className="border-b border-gray-200 last:border-0 hover:bg-[var(--accent-lavender)]/30 transition-colors"
                   >
                     <td className="px-5 py-3.5 font-bold text-gray-900">
                       {b.caller_name}
@@ -138,8 +138,8 @@ export default function BookingsPage() {
                         className={clsx(
                           "text-xs font-bold px-2.5 py-1 uppercase tracking-wide",
                           b.status === "confirmed"
-                            ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
-                            : "bg-red-100 text-red-700 border border-red-300"
+                            ? "bg-[var(--accent-mint)] text-[var(--accent-mint-text)] border border-emerald-300"
+                            : "bg-[var(--accent-peach)] text-[var(--accent-peach-text)] border border-orange-300"
                         )}
                       >
                         {b.status}

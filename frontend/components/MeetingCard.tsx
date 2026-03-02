@@ -40,7 +40,7 @@ export function MeetingCard({ booking, hostTimezone, onUpdate, onCancel }: Meeti
   };
 
   return (
-    <div className="bg-white border-2 border-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-5 flex flex-col gap-3 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+    <div className="bg-[var(--bg-card)] border-2 border-[var(--border-bold)] shadow-[4px_4px_0px_0px_var(--shadow-color)] p-5 flex flex-col gap-3 hover:shadow-[2px_2px_0px_0px_var(--shadow-color)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
       <div className="flex items-start justify-between gap-2">
         <div className="flex flex-col gap-0.5">
           <h3 className="font-bold text-gray-900 text-base leading-tight">
@@ -52,8 +52,8 @@ export function MeetingCard({ booking, hostTimezone, onUpdate, onCancel }: Meeti
           className={clsx(
             "text-xs font-bold px-2.5 py-1 shrink-0 uppercase tracking-wide",
             booking.status === "confirmed"
-              ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
-              : "bg-red-100 text-red-700 border border-red-300"
+              ? "bg-[var(--accent-mint)] text-[var(--accent-mint-text)] border border-emerald-300"
+              : "bg-[var(--accent-peach)] text-[var(--accent-peach-text)] border border-orange-300"
           )}
         >
           {booking.status}

@@ -35,7 +35,7 @@ export function SendLinkButton({ booking, onSent }: SendLinkButtonProps) {
       <button
         onClick={handleSend}
         disabled={loading}
-        className="text-xs font-bold text-gray-900 transition-colors border-2 border-gray-900 px-2.5 py-1 hover:bg-gray-900 hover:text-white disabled:opacity-60"
+        className="text-xs font-bold text-[var(--accent-primary)] transition-colors border-2 border-[var(--accent-primary)] px-2.5 py-1 hover:bg-[var(--accent-primary)] hover:text-white disabled:opacity-60"
       >
         {loading ? "Sending..." : "Send Invite"}
       </button>
