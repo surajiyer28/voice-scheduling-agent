@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from typing import Optional
+from zoneinfo import ZoneInfo
 import uuid
 
 from google.oauth2.credentials import Credentials
@@ -101,18 +102,23 @@ async def create_event(
         "A meeting link will be shared with you shortly before the call."
     )
 
-    host_tz = host.timezone if host.timezone else "America/New_York"
+    host_tz_name = host.timezone if host.timezone else "America/New_York"
+    host_tz = ZoneInfo(host_tz_name)
+
+    # Convert to host-local time so Google Calendar renders it correctly
+    start_local = start_time.astimezone(host_tz)
+    end_local = end_time.astimezone(host_tz)
 
     event_body = {
         "summary": title,
         "description": "\n".join(description_parts),
         "start": {
-            "dateTime": start_time.astimezone(timezone.utc).isoformat(),
-            "timeZone": host_tz,
+            "dateTime": start_local.isoformat(),
+            "timeZone": host_tz_name,
         },
         "end": {
-            "dateTime": end_time.astimezone(timezone.utc).isoformat(),
-            "timeZone": host_tz,
+            "dateTime": end_local.isoformat(),
+            "timeZone": host_tz_name,
         },
     }
 
