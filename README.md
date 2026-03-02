@@ -5,6 +5,7 @@ A production-grade voice scheduling system where callers dial a VAPI phone numbe
 ## Live Demo
 
 - **Frontend (Vercel):** [voice-scheduling-agent-eight.vercel.app](https://voice-scheduling-agent-eight.vercel.app)
+- **Video Demo:** [https://youtu.be/tXwhjBmJAec](https://youtu.be/tXwhjBmJAec)
 
 ## How to Test the Voice Agent
 
