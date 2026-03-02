@@ -87,7 +87,8 @@ Say "Let me get that booked for you now" and then immediately call create_bookin
 - host_id: the UUID from the slot the caller chose in step 4 (each slot in check_availability has a host_id)
 - caller_name: from step 1
 - caller_email: the confirmed email address from step 7
-- start_time and end_time in ISO 8601 with timezone offset (e.g. 2026-03-05T14:00:00+00:00)
+- start_time: copy the EXACT "start" string from the chosen check_availability slot (e.g. "2026-03-05T14:00:00-05:00"). Do NOT modify the timezone offset — use the value exactly as returned.
+- end_time: copy the EXACT "end" string from the chosen check_availability slot. Do NOT modify the timezone offset.
 - title: the meeting purpose from step 6
 
 STEP 9 — Confirm success.
@@ -190,11 +191,11 @@ async def _get_or_create_vapi_assistant() -> str:
                                 },
                                 "start_time": {
                                     "type": "string",
-                                    "description": "Start time in ISO 8601 with UTC offset, e.g. 2026-03-05T14:00:00+00:00",
+                                    "description": "Exact 'start' value from the chosen check_availability slot. Do not modify.",
                                 },
                                 "end_time": {
                                     "type": "string",
-                                    "description": "End time in ISO 8601 (start + 1 hour), e.g. 2026-03-05T15:00:00+00:00",
+                                    "description": "Exact 'end' value from the chosen check_availability slot. Do not modify.",
                                 },
                                 "title": {
                                     "type": "string",
@@ -334,8 +335,8 @@ def _build_assistant_response() -> dict:
                                     "caller_name": {"type": "string", "description": "Full name of the caller"},
                                     "caller_email": {"type": "string", "description": "Caller's email address for booking confirmation"},
                                     "host_id": {"type": "string", "description": "Host UUID from the chosen slot returned by check_availability"},
-                                    "start_time": {"type": "string", "description": "Start time ISO 8601 with UTC offset, e.g. 2026-03-05T14:00:00+00:00"},
-                                    "end_time": {"type": "string", "description": "End time ISO 8601 (start + 1 hour)"},
+                                    "start_time": {"type": "string", "description": "Exact 'start' value from the chosen check_availability slot. Do not modify."},
+                                    "end_time": {"type": "string", "description": "Exact 'end' value from the chosen check_availability slot. Do not modify."},
                                     "title": {"type": "string", "description": "Purpose of the meeting as stated by the caller"},
                                 },
                             },
