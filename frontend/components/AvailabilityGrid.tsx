@@ -40,35 +40,42 @@ const US_TIMEZONES = [
   { value: "America/Honolulu", label: "Hawaii (HT)" },
 ];
 
-interface AvailabilityGridProps {
-  initial: AvailabilitySlot[];
-}
-
-export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
-  const [slots, setSlots] = useState<Omit<AvailabilitySlot, "id" | "host_id">[]>(
-    () => {
-      if (initial.length === 7) {
-        return initial
-          .slice()
-          .sort((a, b) => a.day_of_week - b.day_of_week)
-          .map((s) => ({
-            day_of_week: s.day_of_week,
-            start_time: s.start_time,
-            end_time: s.end_time,
-            is_available: s.is_available,
-          }));
-      }
-      return DEFAULT_SLOTS;
-    }
-  );
-
+export function AvailabilityGrid() {
+  const [slots, setSlots] = useState<Omit<AvailabilitySlot, "id" | "host_id">[]>(DEFAULT_SLOTS);
   const [timezone, setTimezone] = useState("America/New_York");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.getMe().then((host) => setTimezone(host.timezone)).catch(() => {});
+    const load = async () => {
+      try {
+        const [slotsData, host] = await Promise.all([
+          api.getAvailability(),
+          api.getMe(),
+        ]);
+        if (slotsData.length === 7) {
+          setSlots(
+            slotsData
+              .slice()
+              .sort((a, b) => a.day_of_week - b.day_of_week)
+              .map((s) => ({
+                day_of_week: s.day_of_week,
+                start_time: s.start_time,
+                end_time: s.end_time,
+                is_available: s.is_available,
+              }))
+          );
+        }
+        setTimezone(host.timezone);
+      } catch {
+        // use defaults
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
   }, []);
 
   const update = (
@@ -106,6 +113,14 @@ export function AvailabilityGrid({ initial }: AvailabilityGridProps) {
       setSaving(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-16">
+        <div className="w-8 h-8 border-4 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-5">

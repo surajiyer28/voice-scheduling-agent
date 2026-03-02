@@ -1,18 +1,6 @@
-import { api } from "@/lib/api";
 import { AvailabilityGrid } from "@/components/AvailabilityGrid";
-import type { AvailabilitySlot } from "@/lib/supabase";
 
-async function getAvailability(): Promise<AvailabilitySlot[]> {
-  try {
-    return await api.getAvailability();
-  } catch {
-    return [];
-  }
-}
-
-export default async function AvailabilityPage() {
-  const slots = await getAvailability();
-
+export default function AvailabilityPage() {
   return (
     <div className="flex flex-col gap-8 max-w-2xl">
       <div>
@@ -22,7 +10,7 @@ export default async function AvailabilityPage() {
         </p>
       </div>
 
-      <AvailabilityGrid initial={slots} />
+      <AvailabilityGrid />
     </div>
   );
 }
